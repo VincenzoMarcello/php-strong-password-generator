@@ -15,7 +15,22 @@
 </head>
 
 <body>
-    <h1>Title</h1>
+    <!-- FACCIAMO UN FORM IN CUI L'UTENTE DECIDE LA LUNGHEZZA DELLA PASSWORD -->
+    <div class="container mt-5">
+        <form method="GET">
+            <label for="passlng">
+                <h2>Scegli la lunghezza della tua password:</h2>
+            </label>
+            <div>
+                <div class="input-group mb-3">
+                    <input type="number" id="passlng" name="passlng" min="1" max="15" class="form-control"
+                        placeholder="lunghezza password...">
+                    <button class="btn btn-outline-secondary" type="submit">Invia</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
 </body>
 
 </html>
