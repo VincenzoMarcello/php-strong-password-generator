@@ -1,3 +1,45 @@
+<?php
+
+$pass_length = $_GET["passlng"] ?? "";
+
+function generate_password($pass_length)
+{
+    $possible_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+
+
+    $pass = "";
+    for ($i = 0; $i < $pass_length; $i++) {
+        $random = rand(0, strlen($possible_chars) - 1);
+        $pass .= $possible_chars[$random];
+
+    }
+
+    return $pass;
+
+}
+
+$has_length = isset($_GET["passlng"]);
+
+if ($has_length) {
+
+    $generate_password = generate_password($pass_length);
+
+    // SENZA FUNCTION
+    // $possible_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+    // $pass_length = $_GET["passlng"];
+
+    // $pass = "";
+    // for ($i = 0; $i < $pass_length; $i++) {
+    //     $random = rand(0, strlen($possible_chars) - 1);
+    //     $pass .= $possible_chars[$random];
+
+    // }
+
+    // echo $pass;
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,13 +65,16 @@
             </label>
             <div>
                 <div class="input-group mb-3">
-                    <input type="number" id="passlng" name="passlng" min="1" max="15" class="form-control"
+                    <input type="number" id="passlng" name="passlng" min="5" max="15" class="form-control"
                         placeholder="lunghezza password...">
                     <button class="btn btn-outline-secondary" type="submit">Invia</button>
                 </div>
             </div>
-
         </form>
+        <h2>la tua password è:</h2>
+        <h2>
+            <?php echo $generate_password ?? "" ?>
+        </h2>
     </div>
 </body>
 
